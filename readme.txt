@@ -9,18 +9,18 @@ Du kannst unter "Einstellungen > SEO Wunderkiste" genau die Funktionen aktiviere
 --- DIE MODULE ---
 
 1. SEO Schema (JSON-LD)
-   [cite_start]Fügt Beiträgen und Seiten ein Eingabefeld hinzu, um individuellen Schema.org Code (JSON-LD) in den <head> einzufügen. [cite: 22]
+   Fügt Beiträgen und Seiten ein Eingabefeld hinzu, um individuellen Schema.org Code (JSON-LD) in den <head> einzufügen. 
 
 2. Image Resizer (800px)
-   [cite_start]Fügt in den Mediendetails einen Button hinzu, um riesige Bilder mit einem Klick auf webfreundliche 800px herunterzuskalieren. [cite: 23]
+  Fügt in den Mediendetails einen Button hinzu, um riesige Bilder mit einem Klick auf webfreundliche 800px herunterzuskalieren. 
 
 3. Upload Cleaner
    Bereinigt Dateinamen automatisch beim Upload.
-   [cite_start]Beispiel: Aus "Mein Foto_Übersicht.JPG" wird automatisch "mein-foto-uebersicht.jpg". [cite: 24]
+   Beispiel: Aus "Mein Foto_Übersicht.JPG" wird automatisch "mein-foto-uebersicht.jpg".
 
 4. Zero-Click Image SEO
-   [cite_start]Generiert aus dem Dateinamen automatisch den Bild-Titel und den Alt-Text (Alternativtext) für Google. [cite: 25]
-   [cite_start]Beispiel: "mein-neues-projekt.jpg" erzeugt den Alt-Text "Mein Neues Projekt". [cite: 26]
+  Generiert aus dem Dateinamen automatisch den Bild-Titel und den Alt-Text (Alternativtext) für Google. 
+  Beispiel: "mein-neues-projekt.jpg" erzeugt den Alt-Text "Mein Neues Projekt". 
 
 5. Media Library Inspector
    Zeigt in der Medienübersicht (Listenansicht) zwei neue Spalten an:
@@ -44,18 +44,18 @@ Du kannst unter "Einstellungen > SEO Wunderkiste" genau die Funktionen aktiviere
 
 --- INSTALLATION & AKTIVIERUNG ---
 
-1. [cite_start]Lade den Ordner 'seo-wunderkiste' in das Verzeichnis '/wp-content/plugins/' hoch oder lade die ZIP-Datei über das WordPress-Backend (Plugins > Installieren) hoch. [cite: 27]
-2. [cite_start]Aktiviere das Plugin im Menü 'Plugins' in WordPress. [cite: 28]
-3. [cite_start]WICHTIG: Gehe nach der Aktivierung zu "Einstellungen > SEO Wunderkiste". [cite: 28]
-4. [cite_start]Setze Haken bei den Modulen, die du nutzen möchtest, und klicke auf "Speichern". [cite: 29]
+1.  Lade den Ordner 'seo-wunderkiste' in das Verzeichnis '/wp-content/plugins/' hoch oder lade die ZIP-Datei über das WordPress-Backend (Plugins > Installieren) hoch.
+2.  Aktiviere das Plugin im Menü 'Plugins' in WordPress.
+3.  WICHTIG: Gehe nach der Aktivierung zu "Einstellungen > SEO Wunderkiste".
+4.  Setze Haken bei den Modulen, die du nutzen möchtest, und klicke auf "Speichern". 
 
 --- BENUTZUNG ---
 
 > Wie nutze ich das Schema-Feld?
-Gehe in einen Beitrag oder eine Seite. Unter dem Editor findest du die Box "Strukturierte Daten". [cite_start]Füge dort dein JSON-Objekt ein (ohne <script> Tags). [cite: 30, 31]
+Gehe in einen Beitrag oder eine Seite. Unter dem Editor findest du die Box "Strukturierte Daten". [cite_start]Füge dort dein JSON-Objekt ein (ohne <script> Tags). 
 
 > Wie skaliere ich Bilder?
-Gehe in die Mediathek, klicke ein Bild an. [cite_start]In den Details (rechts oder im Modal) findest du den Button "Auf 800px skalieren". [cite: 32, 33]
+Gehe in die Mediathek, klicke ein Bild an. [cite_start]In den Details (rechts oder im Modal) findest du den Button "Auf 800px skalieren". 
 
 > Wie nutze ich den Login Türsteher?
 Aktiviere das Modul in den Einstellungen und lege ein geheimes Wort fest (z.B. "supergeheim").
@@ -64,7 +64,7 @@ deineseite.de/wp-login.php?supergeheim
 Ohne diesen Zusatz werden Besucher auf die Startseite umgeleitet.
 
 > Wie funktionieren Cleaner, Image SEO und Redirects?
-Diese Module arbeiten vollautomatisch im Hintergrund, sobald sie in den Einstellungen aktiviert wurden. [cite_start]Es ist kein weiteres Zutun nötig. [cite: 34, 35]
+Diese Module arbeiten vollautomatisch im Hintergrund, sobald sie in den Einstellungen aktiviert wurden. [cite_start]Es ist kein weiteres Zutun nötig.
 
 --- ANFORDERUNGEN ---
 * WordPress Version: 5.0 oder höher
