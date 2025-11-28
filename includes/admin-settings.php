@@ -5,21 +5,20 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  * ADMIN SETTINGS PAGE - SEO WUNDERKISTE
  * ------------------------------------------------------------------------- */
 
-// 1. Menüpunkt unter "Einstellungen" hinzufügen
+// 1. Menüpunkt hinzufügen
 function seowk_add_admin_menu() {
     add_options_page(
-        'SEO Wunderkiste Einstellungen', // Seitentitel
-        'SEO Wunderkiste',               // Menütitel
-        'manage_options',                // Berechtigung
-        'seo-wunderkiste',               // Slug
-        'seowk_options_page_html'        // Callback
+        'SEO Wunderkiste Einstellungen',
+        'SEO Wunderkiste',
+        'manage_options',
+        'seo-wunderkiste',
+        'seowk_options_page_html'
     );
 }
 add_action( 'admin_menu', 'seowk_add_admin_menu' );
 
 // 2. Einstellungen registrieren
 function seowk_settings_init() {
-    // Wir speichern alles in einem Array namens 'seowk_settings'
     register_setting( 'seowk_plugin_group', 'seowk_settings' );
 
     add_settings_section(
@@ -29,92 +28,74 @@ function seowk_settings_init() {
         'seo-wunderkiste'
     );
 
-    /* --- Modul 1: Schema --- */
+    /* --- BESTEHENDE MODULE --- */
+    
     add_settings_field(
-        'seowk_enable_schema',
-        'SEO Schema (JSON-LD)',
-        'seowk_checkbox_render',
-        'seo-wunderkiste',
-        'seowk_plugin_section',
-        array( 
-            'label_for' => 'seowk_enable_schema',
-            'description' => 'Fügt ein Eingabefeld für strukturierte Daten in Beiträge/Seiten ein.' 
-        )
+        'seowk_enable_schema', 'SEO Schema (JSON-LD)', 'seowk_checkbox_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_enable_schema', 'description' => 'Fügt ein Eingabefeld für strukturierte Daten hinzu.' )
     );
 
-    /* --- Modul 2: Resizer --- */
     add_settings_field(
-        'seowk_enable_resizer',
-        'Image Resizer (800px)',
-        'seowk_checkbox_render',
-        'seo-wunderkiste',
-        'seowk_plugin_section',
-        array( 
-            'label_for' => 'seowk_enable_resizer',
-            'description' => 'Fügt einen Button in den Mediendetails hinzu, um Bilder manuell auf 800px zu skalieren.' 
-        )
+        'seowk_enable_resizer', 'Image Resizer (800px)', 'seowk_checkbox_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_enable_resizer', 'description' => 'Button in Mediendetails zum Skalieren auf 800px.' )
     );
 
-    /* --- Modul 3: Cleaner --- */
     add_settings_field(
-        'seowk_enable_cleaner',
-        'Upload Cleaner',
-        'seowk_checkbox_render',
-        'seo-wunderkiste',
-        'seowk_plugin_section',
-        array( 
-            'label_for' => 'seowk_enable_cleaner',
-            'description' => 'Bereinigt Dateinamen beim Upload automatisch (Kleinschreibung, keine Umlaute, Bindestriche).' 
-        )
+        'seowk_enable_cleaner', 'Upload Cleaner', 'seowk_checkbox_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_enable_cleaner', 'description' => 'Dateinamen beim Upload automatisch bereinigen.' )
     );
 
-    /* --- Modul 4: Image SEO --- */
     add_settings_field(
-        'seowk_enable_image_seo',
-        'Zero-Click Image SEO',
-        'seowk_checkbox_render',
-        'seo-wunderkiste',
-        'seowk_plugin_section',
-        array( 
-            'label_for' => 'seowk_enable_image_seo',
-            'description' => 'Generiert automatisch Titel & Alt-Tags aus dem bereinigten Dateinamen.' 
-        )
+        'seowk_enable_image_seo', 'Zero-Click Image SEO', 'seowk_checkbox_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_enable_image_seo', 'description' => 'Auto-Titel & Alt-Tags aus Dateinamen generieren.' )
     );
 
-    /* --- Modul 5: Media Inspector --- */
     add_settings_field(
-        'seowk_enable_media_columns',
-        'Media Library Inspector',
-        'seowk_checkbox_render',
-        'seo-wunderkiste',
-        'seowk_plugin_section',
-        array( 
-            'label_for' => 'seowk_enable_media_columns',
-            'description' => 'Zeigt Dateigröße und Dimensionen direkt in der Listenansicht der Mediathek an.' 
-        )
+        'seowk_enable_media_columns', 'Media Inspector', 'seowk_checkbox_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_enable_media_columns', 'description' => 'Zeigt Dateigröße und Pixelmaße in der Übersicht.' )
     );
 
-    /* --- Modul 6: Zombie Killer --- */
     add_settings_field(
-        'seowk_enable_seo_redirects',
-        'SEO Zombie Killer',
-        'seowk_checkbox_render',
-        'seo-wunderkiste',
-        'seowk_plugin_section',
-        array( 
-            'label_for' => 'seowk_enable_seo_redirects',
-            'description' => 'Leitet leere Anhang-Seiten automatisch auf den zugehörigen Beitrag um (verhindert Thin Content).' 
-        )
+        'seowk_enable_seo_redirects', 'SEO Zombie Killer', 'seowk_checkbox_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_enable_seo_redirects', 'description' => 'Leitet leere Anhang-Seiten auf Beiträge um.' )
+    );
+
+    /* --- NEUE MODULE (Updates) --- */
+
+    add_settings_field(
+        'seowk_enable_svg', 'SVG Upload erlauben', 'seowk_checkbox_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_enable_svg', 'description' => 'Erlaubt das Hochladen von SVG-Dateien in die Mediathek.' )
+    );
+
+    add_settings_field(
+        'seowk_disable_emojis', 'Emoji-Bloat entfernen', 'seowk_checkbox_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_disable_emojis', 'description' => 'Entfernt WordPress Emoji-Skripte für schnellere Ladezeiten.' )
+    );
+
+    add_settings_field(
+        'seowk_disable_xmlrpc', 'XML-RPC deaktivieren', 'seowk_checkbox_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_disable_xmlrpc', 'description' => 'Schließt die XML-RPC Schnittstelle (Schutz vor Angriffen).' )
+    );
+
+    /* --- TÜRSTEHER (Special) --- */
+    
+    add_settings_field(
+        'seowk_enable_login_protection', 'Login Türsteher', 'seowk_checkbox_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_enable_login_protection', 'description' => 'Versteckt die Login-Seite hinter einem geheimen Parameter.' )
+    );
+
+    add_settings_field(
+        'seowk_login_protection_key', 'Türsteher Schlüssel', 'seowk_text_render', 'seo-wunderkiste', 'seowk_plugin_section',
+        array( 'label_for' => 'seowk_login_protection_key', 'description' => 'Dein geheimes Wort. Login nur via: <code>wp-login.php?DEINWORT</code>. (Standard: hintereingang)' )
     );
 }
 add_action( 'admin_init', 'seowk_settings_init' );
 
-// Callback für Beschreibungstext
 function seowk_section_callback() {
     echo '<p>Wähle hier die Werkzeuge aus, die du aktivieren möchtest.</p>';
 }
 
-// 3. Render-Funktion für Checkboxen
+// Checkbox Render
 function seowk_checkbox_render( $args ) {
     $options = get_option( 'seowk_settings' );
     $field   = $args['label_for'];
@@ -123,12 +104,26 @@ function seowk_checkbox_render( $args ) {
     ?>
     <input type="checkbox" id="<?php echo esc_attr( $field ); ?>" name="seowk_settings[<?php echo esc_attr( $field ); ?>]" value="1" <?php checked( 1, $checked ); ?>>
     <?php if ( ! empty( $desc ) ) : ?>
-        <p class="description" style="display:inline-block; margin-left: 5px; vertical-align: middle;"><?php echo esc_html( $desc ); ?></p>
+        <p class="description" style="display:inline-block; margin-left: 5px; vertical-align: middle;"><?php echo $desc; ?></p>
     <?php endif; ?>
     <?php
 }
 
-// 4. HTML Ausgabe der gesamten Seite
+// Text Input Render (NEU)
+function seowk_text_render( $args ) {
+    $options = get_option( 'seowk_settings' );
+    $field   = $args['label_for'];
+    $value   = isset( $options[ $field ] ) ? $options[ $field ] : '';
+    $desc    = isset( $args['description'] ) ? $args['description'] : '';
+    ?>
+    <input type="text" id="<?php echo esc_attr( $field ); ?>" name="seowk_settings[<?php echo esc_attr( $field ); ?>]" value="<?php echo esc_attr( $value ); ?>" class="regular-text" placeholder="hintereingang">
+    <?php if ( ! empty( $desc ) ) : ?>
+        <p class="description"><?php echo $desc; ?></p>
+    <?php endif; ?>
+    <?php
+}
+
+// HTML Page Output
 function seowk_options_page_html() {
     if ( ! current_user_can( 'manage_options' ) ) { return; }
     ?>
