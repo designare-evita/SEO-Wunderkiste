@@ -1,0 +1,144 @@
+/**
+ * SEO Wunderkiste - Semantic Blocks Editor Styles
+ * Version: 2.9
+ */
+
+/* Wrapper Blocks */
+.seowk-semantic-block {
+    border: 2px dashed #2271b1;
+    border-radius: 4px;
+    padding: 0;
+    position: relative;
+    min-height: 100px;
+}
+
+.seowk-semantic-block .block-editor-inner-blocks {
+    padding: 1.5em 1em 1em;
+}
+
+.seowk-semantic-label {
+    background: #2271b1;
+    color: white;
+    font-family: monospace;
+    font-size: 11px;
+    padding: 2px 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 4px 0;
+    z-index: 1;
+}
+
+.seowk-semantic-label-end {
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    border-radius: 4px 0 0 0;
+}
+
+/* Block-specific colors */
+.seowk-semantic-article { border-color: #2271b1; }
+.seowk-semantic-article .seowk-semantic-label { background: #2271b1; }
+
+.seowk-semantic-section { border-color: #00a32a; }
+.seowk-semantic-section .seowk-semantic-label { background: #00a32a; }
+
+.seowk-semantic-aside { border-color: #dba617; }
+.seowk-semantic-aside .seowk-semantic-label { background: #dba617; }
+
+.seowk-semantic-header { border-color: #8c5383; }
+.seowk-semantic-header .seowk-semantic-label { background: #8c5383; }
+
+.seowk-semantic-footer { border-color: #646970; }
+.seowk-semantic-footer .seowk-semantic-label { background: #646970; }
+
+.seowk-semantic-main { border-color: #d63638; }
+.seowk-semantic-main .seowk-semantic-label { background: #d63638; }
+
+.seowk-semantic-figure { border-color: #3582c4; }
+.seowk-semantic-figure .seowk-semantic-label { background: #3582c4; }
+
+.seowk-semantic-address { border-color: #1d2327; }
+.seowk-semantic-address .seowk-semantic-label { background: #1d2327; }
+
+.seowk-semantic-nav { border-color: #9a6700; }
+.seowk-semantic-nav .seowk-semantic-label { background: #9a6700; }
+
+/* Details Block Editor */
+.seowk-details-editor {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.seowk-details-summary-editor {
+    display: flex;
+    align-items: center;
+    background: #f0f0f0;
+    padding: 0.5em;
+    border-bottom: 1px solid #ddd;
+    gap: 8px;
+}
+
+.seowk-details-icon-editor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    font-size: 16px;
+    color: #1e1e1e;
+}
+
+.seowk-details-summary-editor .components-text-control__input {
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    padding: 0.25em;
+    flex: 1;
+}
+
+.seowk-details-content-editor {
+    padding: 1em;
+    min-height: 60px;
+    background: #fff;
+}
+
+/* Icon Position Right */
+.seowk-icon-right .seowk-details-summary-editor {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+/* Mark Block Editor */
+.seowk-mark-editor mark {
+    display: block;
+    background: linear-gradient(120deg, #fff176 0%, #ffee58 100%);
+    padding: 0.5em;
+    border-radius: 4px;
+}
+
+.seowk-mark-editor .components-text-control__input {
+    background: transparent;
+    border: none;
+}
+
+/* Hover effects */
+.seowk-semantic-block:hover {
+    border-style: solid;
+}
+
+/* InnerBlocks placeholder */
+.seowk-semantic-block .block-editor-inner-blocks .block-editor-block-list__layout:empty::after {
+    content: "Blöcke hier einfügen...";
+    color: #757575;
+    font-style: italic;
+    display: block;
+    padding: 1em;
+    text-align: center;
+}
+
+/* Category icon style (in block inserter) */
+.block-editor-block-types-list__list-item[data-type^="seowk/"] .block-editor-block-types-list__item-icon {
+    color: #2271b1;
+}

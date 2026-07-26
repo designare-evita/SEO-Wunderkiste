@@ -1,0 +1,132 @@
+/**
+ * Decent Lightbox – styles
+ */
+
+/* Cursor hint on enabled images */
+img[data-decent-lightbox="1"] {
+	cursor: zoom-in;
+}
+
+/* Overlay container – fills viewport */
+.decent-lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 999999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(15, 15, 17, 0.92);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 220ms ease;
+	padding: clamp(12px, 4vw, 48px);
+	box-sizing: border-box;
+}
+
+.decent-lightbox.is-open {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Image wrapper centers the image and constrains size */
+.decent-lightbox__stage {
+	position: relative;
+	max-width: min(100%, 1600px);
+	max-height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: scale(0.985);
+	transition: transform 220ms ease;
+}
+
+.decent-lightbox.is-open .decent-lightbox__stage {
+	transform: scale(1);
+}
+
+.decent-lightbox__image {
+	display: block;
+	max-width: 100%;
+	max-height: calc(100vh - clamp(24px, 8vw, 96px));
+	width: auto;
+	height: auto;
+	object-fit: contain;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+	background: #111;
+}
+
+/* Loading spinner */
+.decent-lightbox__spinner {
+	position: absolute;
+	inset: 0;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.decent-lightbox.is-loading .decent-lightbox__spinner {
+	display: flex;
+}
+
+.decent-lightbox__spinner::after {
+	content: "";
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 2px solid rgba(255, 255, 255, 0.25);
+	border-top-color: rgba(255, 255, 255, 0.9);
+	animation: decent-lightbox-spin 800ms linear infinite;
+}
+
+@keyframes decent-lightbox-spin {
+	to { transform: rotate(360deg); }
+}
+
+/* Close button */
+.decent-lightbox__close {
+	position: absolute;
+	top: clamp(8px, 2vw, 16px);
+	right: clamp(8px, 2vw, 16px);
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 0;
+	background: rgba(255, 255, 255, 0.08);
+	color: #fff;
+	font-size: 24px;
+	line-height: 1;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background 160ms ease;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.decent-lightbox__close:hover,
+.decent-lightbox__close:focus-visible {
+	background: rgba(255, 255, 255, 0.18);
+	outline: none;
+}
+
+.decent-lightbox__close:focus-visible {
+	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85);
+}
+
+/* Reduce motion respectfully */
+@media (prefers-reduced-motion: reduce) {
+	.decent-lightbox,
+	.decent-lightbox__stage {
+		transition: none;
+	}
+	.decent-lightbox__spinner::after {
+		animation: none;
+	}
+}
+
+/* Lock body scroll when lightbox is open */
+body.decent-lightbox-open {
+	overflow: hidden;
+}
